@@ -83,8 +83,46 @@ document.querySelector("#drawArc").addEventListener("click", () => {
     .buildArcPath();
   canvas2d.stroke();
 });
-document.querySelector("#drawImage").addEventListener("click", () => {});
-document.querySelector("#drawShadow").addEventListener("click", () => {});
-document.querySelector("#drawGradient").addEventListener("click", () => {});
-document.querySelector("#drawScale").addEventListener("click", () => {});
-document.querySelector("#drawRotate").addEventListener("click", () => {});
+document.querySelector("#drawImage").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  const img = new Image();
+  img.src = "./icon.jpg";
+  img.onload = () => {
+    canvas2d.drawImage(img, 10, 10);
+  };
+});
+document.querySelector("#drawShadow").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setFillStyle("#dac53d").setShadow("#555", 5).end();
+  canvas2d.initRect().setLTPoint(30, 0).setRBPoint(30, 30).fillRect();
+});
+document.querySelector("#drawGradient").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d
+    .initStyle()
+    .createLinearGradient(30, 0, 30, 30)
+    .addColorStop(0, "#fff")
+    .addColorStop(1, "#000")
+    .setFillStyle()
+    .setShadow("#555", 5)
+    .end();
+  canvas2d.initRect().setLTPoint(30, 0).setRBPoint(30, 30).fillRect();
+});
+document.querySelector("#drawScale").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setFillStyle("#dac53d").end();
+  canvas2d
+    .initArc()
+    .setCentralPoint(30, 10)
+    .setRadius(5)
+    .setAngle(0, 2 * Math.PI)
+    .buildArcPath(false);
+  canvas2d.fill();
+  canvas2d.scale(2, 2);
+});
+document.querySelector("#drawRotate").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setStrokeStyle("#dac53d").end();
+  canvas2d.rotate((30 * Math.PI) / 180);
+  canvas2d.initRect().setLTPoint(100, 100).setRBPoint(30, 30).strokeRect();
+});

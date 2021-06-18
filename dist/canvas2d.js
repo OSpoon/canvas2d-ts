@@ -688,6 +688,38 @@ var Canvas2D = /** @class */ (function () {
         return this._context.isPointInPath(x, y);
     };
     /**
+     * 绘制图像
+     * @param image 规定要使用的图像、画布或视频。
+     * @param dx 在画布上放置图像的 x 坐标位置。
+     * @param dy 在画布上放置图像的 y 坐标位置。
+     * @param dw 在画布上放置图像的 x 坐标位置。
+     * @param dh 在画布上放置图像的 y 坐标位置。
+     */
+    Canvas2D.prototype.drawImage = function (image, dx, dy, dw, dh) {
+        if (dw && dh) {
+            this._context.drawImage(image, dx, dy, dw, dh);
+        }
+        else {
+            this._context.drawImage(image, dx, dy);
+        }
+    };
+    /**
+     * 绘制被裁剪的图像
+     * @param image 规定要使用的图像、画布或视频。
+     * @param sx 开始剪切的 x 坐标位置。
+     * @param sy 开始剪切的 y 坐标位置。
+     * @param sw 被剪切图像的宽度。
+     * @param sh 被剪切图像的高度。
+     * @param dx 在画布上放置图像的 x 坐标位置。
+     * @param dy 在画布上放置图像的 y 坐标位置。
+     * @param dw 在画布上放置图像的 x 坐标位置。
+     * @param dh 在画布上放置图像的 y 坐标位置。
+     * @returns
+     */
+    Canvas2D.prototype.tailorImage = function (image, sx, sy, sw, sh, dx, dy, dw, dh) {
+        return this._context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+    };
+    /**
      * 对构建的路径填充
      */
     Canvas2D.prototype.fill = function () {
