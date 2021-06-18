@@ -126,3 +126,39 @@ document.querySelector("#drawRotate").addEventListener("click", () => {
   canvas2d.rotate((30 * Math.PI) / 180);
   canvas2d.initRect().setLTPoint(100, 100).setRBPoint(30, 30).strokeRect();
 });
+
+/**
+ * 生成随机静态粒子
+ */
+class Particle {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.context = canvas.getContext();
+    this.initPoint();
+  }
+
+  initPoint() {
+    this.x = Math.random() * this.canvas.getWidth();
+    this.y = Math.random() * this.canvas.getHeight();
+    this.r = Math.random() * 2 + 1;
+    const alpha = (Math.floor(Math.random() * 10) + 1) / 10 / 2;
+    this.color = "rgba(255,255,255," + alpha + ")";
+  }
+
+  drawPoint() {
+    this.context.fillStyle = this.color;
+    this.context.shadowBlur = this.r * 2;
+    this.context.beginPath();
+    this.context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+    this.context.closePath();
+    this.context.fill();
+  }
+}
+
+document.querySelector("#drawParticle").addEventListener("click", () => {
+  (function () {
+    for (let i = 0; i < 1000; i++) {
+      new Particle(new Canvas2D("#app")).drawPoint();
+    }
+  })();
+});
