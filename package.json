@@ -1,0 +1,21 @@
+{
+  "name": "canvas2d-ts",
+  "version": "1.0.0",
+  "description": "面向对象使用Canvas2D,采用链式调用的方式更加适合熟悉原生canvas相关API",
+  "main": "test-canvas2d.js",
+  "scripts": {
+    "b": "tsc && rollup --config rollup.config.js"
+  },
+  "keywords": [
+    "canvas2d",
+    "ts",
+    "typescript",
+    "canvas"
+  ],
+  "author": "OSpoon",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^2.52.1",
+    "typescript": "^4.3.4"
+  }
+}
