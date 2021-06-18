@@ -102,7 +102,7 @@ var Canvas2D = /** @class */ (function () {
      * 绘制线条属性
      * @returns
      */
-    Canvas2D.prototype.buildLine = function () {
+    Canvas2D.prototype.initLine = function () {
         this._drawLineBuilder = new DrawLineBuilder(this._dbContext);
         return this._drawLineBuilder;
     };

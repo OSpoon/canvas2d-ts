@@ -1,11 +1,90 @@
 import { Canvas2D } from "../dist/canvas2d.js";
-let canvas2d = new Canvas2D("#app");
-canvas2d
-  .initStyle()
-  .setStrokeStyle("#555")
-  .end()
-  .initRect()
-  .setLTPoint(0, 0)
-  .setRBPoint(100, 100)
-  .buildRectPath()
-  .stroke();
+
+document.querySelector("#drawPoint").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setFillStyle("#dac53d").end();
+  canvas2d
+    .initArc()
+    .setCentralPoint(10, 10)
+    .setRadius(5)
+    .setAngle(0, 2 * Math.PI)
+    .buildArcPath();
+  canvas2d
+    .initArc()
+    .setCentralPoint(20, 10)
+    .setRadius(5)
+    .setAngle(0, 2 * Math.PI)
+    .buildArcPath(false);
+  canvas2d
+    .initArc()
+    .setCentralPoint(30, 10)
+    .setRadius(5)
+    .setAngle(0, 2 * Math.PI)
+    .buildArcPath(false);
+  canvas2d.fill();
+});
+document.querySelector("#drawLine").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setStrokeStyle("#dac53d").end();
+  canvas2d.initLintStyle().setWidth(5).end();
+  canvas2d
+    .initLine()
+    .moveTo(0, 0)
+    .lineTo(30, 0)
+    .lineTo(30, 30)
+    .lineTo(0, 30)
+    .buildLinePath(true);
+  canvas2d.stroke();
+});
+document.querySelector("#drawRect").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setStrokeStyle("#dac53d").end();
+  canvas2d.initRect().setLTPoint(0, 0).setRBPoint(30, 30).strokeRect();
+
+  canvas2d.initStyle().setFillStyle("#dac53d").end();
+  canvas2d.initRect().setLTPoint(30, 0).setRBPoint(30, 30).fillRect();
+
+  canvas2d.initStyle().setStrokeStyle("#dac53d").end();
+  canvas2d.initRect().setLTPoint(60, 0).setRBPoint(30, 30).buildRectPath();
+  canvas2d.stroke();
+});
+document.querySelector("#drawArc").addEventListener("click", () => {
+  let canvas2d = new Canvas2D("#app");
+  canvas2d.initStyle().setStrokeStyle("#dac53d").end();
+  canvas2d
+    .initArc()
+    .setCentralPoint(30, 30)
+    .setRadius(10)
+    .setAngle(0 * Math.PI, 0.5 * Math.PI)
+    .buildArcPath();
+  canvas2d.stroke();
+  canvas2d.initStyle().setStrokeStyle("#3b370f").end();
+  canvas2d
+    .initArc()
+    .setCentralPoint(30, 30)
+    .setRadius(10)
+    .setAngle(0.5 * Math.PI, 1 * Math.PI)
+    .buildArcPath();
+  canvas2d.stroke();
+  canvas2d.initStyle().setStrokeStyle("#dac53d").end();
+  canvas2d
+    .initArc()
+    .setCentralPoint(30, 30)
+    .setRadius(10)
+    .setAngle(1 * Math.PI, 1.5 * Math.PI)
+    .buildArcPath();
+  canvas2d.stroke();
+  canvas2d.initStyle().setStrokeStyle("#3b370f").end();
+  canvas2d
+    .initArc()
+    .setCentralPoint(30, 30)
+    .setRadius(10)
+    .setAngle(1.5 * Math.PI, 2 * Math.PI)
+    .buildArcPath();
+  canvas2d.stroke();
+});
+document.querySelector("#drawImage").addEventListener("click", () => {});
+document.querySelector("#drawShadow").addEventListener("click", () => {});
+document.querySelector("#drawGradient").addEventListener("click", () => {});
+document.querySelector("#drawScale").addEventListener("click", () => {});
+document.querySelector("#drawRotate").addEventListener("click", () => {});

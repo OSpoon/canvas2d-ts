@@ -11,7 +11,7 @@ var DrawArcBuilder = /** @class */ (function () {
         this.centerPointX = 0;
         this.centerPointY = 0;
         this.radius = 0;
-        this.counterclockwise = true;
+        this.counterclockwise = false;
     }
     /**
      * 设置圆心坐标

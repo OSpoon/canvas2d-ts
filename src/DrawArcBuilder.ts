@@ -22,7 +22,7 @@ export class DrawArcBuilder {
     this.centerPointX = 0;
     this.centerPointY = 0;
     this.radius = 0;
-    this.counterclockwise = true;
+    this.counterclockwise = false;
   }
 
   /**

@@ -309,7 +309,7 @@ var DrawArcBuilder = /** @class */ (function () {
         this.centerPointX = 0;
         this.centerPointY = 0;
         this.radius = 0;
-        this.counterclockwise = true;
+        this.counterclockwise = false;
     }
     /**
      * 设置圆心坐标
@@ -625,7 +625,7 @@ var Canvas2D = /** @class */ (function () {
      * 绘制线条属性
      * @returns
      */
-    Canvas2D.prototype.buildLine = function () {
+    Canvas2D.prototype.initLine = function () {
         this._drawLineBuilder = new DrawLineBuilder(this._dbContext);
         return this._drawLineBuilder;
     };

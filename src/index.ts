@@ -122,7 +122,7 @@ export class Canvas2D {
    * 绘制线条属性
    * @returns
    */
-  buildLine() {
+  initLine() {
     this._drawLineBuilder = new DrawLineBuilder(this._dbContext);
     return this._drawLineBuilder;
   }

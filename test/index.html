@@ -13,7 +13,26 @@
     </style>
   </head>
   <body>
-    <canvas id="app" width="600" height="200"></canvas>
+    绘制:
+    <div style="margin: 10px">
+      <button id="drawPoint">圆点</button>
+      <button id="drawLine">直线</button>
+      <button id="drawRect">矩形</button>
+      <button id="drawArc">曲线</button>
+      <button id="drawImage">画图</button>
+    </div>
+    颜色、样式和阴影:
+    <div style="margin: 10px">
+      <button id="drawShadow">阴影</button>
+      <button id="drawGradient">渐变</button>
+    </div>
+    图形转换:
+    <div style="margin: 10px">
+      <button id="drawScale">缩放</button>
+      <button id="drawRotate">旋转</button>
+    </div>
+
+    <canvas id="app" width="800" height="500"></canvas>
     <script src="./canvas2d.test.js" type="module"></script>
   </body>
 </html>
