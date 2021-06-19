@@ -8,12 +8,18 @@ import { TextBuilder } from "./TextBuilder.js";
  * 2D画板对象
  */
 var Canvas2D = /** @class */ (function () {
-    function Canvas2D(el) {
+    function Canvas2D(el, width, height) {
         var _a;
         this._dbContext = this;
         this._canvas = document.querySelector(el);
         if (!this._canvas) {
             throw new Error("未找到设置的canvas");
+        }
+        if (width) {
+            this._canvas.width = width;
+        }
+        if (height) {
+            this._canvas.height = height;
         }
         this._context = (_a = this._canvas) === null || _a === void 0 ? void 0 : _a.getContext("2d");
         this._styleBuilder = null;

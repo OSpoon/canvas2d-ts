@@ -20,11 +20,17 @@ export class Canvas2D {
   private _drawArcBuilder: DrawArcBuilder | null | undefined;
   private _drawRectBuilder: DrawRectBuilder | null | undefined;
   private _textBuilder: TextBuilder | null | undefined;
-  constructor(el: string) {
+  constructor(el: string, width?: number, height?: number) {
     this._dbContext = this;
     this._canvas = document.querySelector(el);
     if (!this._canvas) {
       throw new Error("未找到设置的canvas");
+    }
+    if (width) {
+      this._canvas.width = width;
+    }
+    if (height) {
+      this._canvas.height = height;
     }
     this._context = this._canvas?.getContext("2d");
 

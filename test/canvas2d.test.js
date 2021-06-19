@@ -1,7 +1,7 @@
 import { Canvas2D } from "../dist/canvas2d.js";
 
 document.querySelector("#drawPoint").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setFillStyle("#dac53d").end();
   canvas2d
     .initArc()
@@ -24,7 +24,7 @@ document.querySelector("#drawPoint").addEventListener("click", () => {
   canvas2d.fill();
 });
 document.querySelector("#drawLine").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setStrokeStyle("#dac53d").end();
   canvas2d.initLintStyle().setWidth(5).end();
   canvas2d
@@ -37,7 +37,7 @@ document.querySelector("#drawLine").addEventListener("click", () => {
   canvas2d.stroke();
 });
 document.querySelector("#drawRect").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setStrokeStyle("#dac53d").end();
   canvas2d.initRect().setLTPoint(0, 0).setRBPoint(30, 30).strokeRect();
 
@@ -49,7 +49,7 @@ document.querySelector("#drawRect").addEventListener("click", () => {
   canvas2d.stroke();
 });
 document.querySelector("#drawArc").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setStrokeStyle("#dac53d").end();
   canvas2d
     .initArc()
@@ -84,7 +84,7 @@ document.querySelector("#drawArc").addEventListener("click", () => {
   canvas2d.stroke();
 });
 document.querySelector("#drawImage").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   const img = new Image();
   img.src = "./icon.jpg";
   img.onload = () => {
@@ -92,12 +92,12 @@ document.querySelector("#drawImage").addEventListener("click", () => {
   };
 });
 document.querySelector("#drawShadow").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setFillStyle("#dac53d").setShadow("#555", 5).end();
   canvas2d.initRect().setLTPoint(30, 0).setRBPoint(30, 30).fillRect();
 });
 document.querySelector("#drawGradient").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d
     .initStyle()
     .createLinearGradient(30, 0, 30, 30)
@@ -109,7 +109,7 @@ document.querySelector("#drawGradient").addEventListener("click", () => {
   canvas2d.initRect().setLTPoint(30, 0).setRBPoint(30, 30).fillRect();
 });
 document.querySelector("#drawScale").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setFillStyle("#dac53d").end();
   canvas2d
     .initArc()
@@ -121,44 +121,20 @@ document.querySelector("#drawScale").addEventListener("click", () => {
   canvas2d.scale(2, 2);
 });
 document.querySelector("#drawRotate").addEventListener("click", () => {
-  let canvas2d = new Canvas2D("#app");
+  let canvas2d = new Canvas2D("#app", 800, 500);
   canvas2d.initStyle().setStrokeStyle("#dac53d").end();
   canvas2d.rotate((30 * Math.PI) / 180);
   canvas2d.initRect().setLTPoint(100, 100).setRBPoint(30, 30).strokeRect();
 });
 
 /**
- * 生成随机静态粒子
+ * 生成随机粒子
  */
-class Particle {
-  constructor(canvas) {
-    this.canvas = canvas;
-    this.context = canvas.getContext();
-    this.initPoint();
-  }
-
-  initPoint() {
-    this.x = Math.random() * this.canvas.getWidth();
-    this.y = Math.random() * this.canvas.getHeight();
-    this.r = Math.random() * 2 + 1;
-    const alpha = (Math.floor(Math.random() * 10) + 1) / 10 / 2;
-    this.color = "rgba(255,255,255," + alpha + ")";
-  }
-
-  drawPoint() {
-    this.context.fillStyle = this.color;
-    this.context.shadowBlur = this.r * 2;
-    this.context.beginPath();
-    this.context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-    this.context.closePath();
-    this.context.fill();
-  }
-}
-
+import { Particle } from "./particle.js";
 document.querySelector("#drawParticle").addEventListener("click", () => {
   (function () {
-    for (let i = 0; i < 1000; i++) {
-      new Particle(new Canvas2D("#app")).drawPoint();
-    }
+    new Canvas2D("#app", 800, 500);
+
+    new Particle("#app").start();
   })();
 });
