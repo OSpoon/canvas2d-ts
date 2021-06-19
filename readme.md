@@ -19,3 +19,6 @@
     .stroke();
 </script>
 ```
+
+##### 提示:
+> 在vscode中安装Live Server插件来启动test中的index.html文件进行预览
